@@ -1,0 +1,29 @@
+{
+  "name": "tollo",
+  "version": "0.0.1-alpha",
+  "description": "javascript tester library",
+  "main": "index.js",
+  "dependencies": {
+    "a-toolbox": "^1.x",
+    "bluebird": "^3.x",
+    "checkv": "^1.x",
+    "lodash": "^4.x",
+    "log-segment": "^1.5.0",
+    "orchestrator": "^0.3.x",
+    "request": "^2.x",
+    "request-promise": "^4.x",
+    "tough-cookie": "^2.x",
+    "tap": "^10.x"
+    },
+  "devDependencies": {
+    "standard": "^x"
+  },
+  "engines": {
+    "node": ">=8"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Simone Sanfratello <simone@braceslab.com>",
+  "license": "MIT"
+}
