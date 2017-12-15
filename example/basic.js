@@ -49,7 +49,7 @@ tester.add({
 tester.add({
   'fs.chmod': {
     describe: 'fs.chmod',
-    mode: tester.mode.ASYNC,
+    mode: tester.mode.CALLBACK,
 
     arrange: (input, sandbox) => {
       return new Promise((resolve, reject) => {
