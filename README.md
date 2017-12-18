@@ -4,17 +4,18 @@
 [![NPM Downloads](https://img.shields.io/npm/dm/tollo.svg?style=flat)](https://www.npmjs.org/package/tollo)
 [![JS Standard Style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](http://standardjs.com/)
 
-javascript testing library
+javascript testing library AAA schema
 
 ## Purpose
 
 A tool to write declarative test unit  
-[why test code is so awful?]()
+[why test code is so awful?](..medium)
 
 ## Install
 
 ````bash
 $ npm i tollo --save
+$ npm i tap -g
 ````
 
 ### Quick start
@@ -51,17 +52,21 @@ tester.add({
 })
 
 // callback
+...
 
 // promise / async
+...
 
 // event
+...
 
 // http
+...
 
 tollo.run()
 ````
 
-``tollo`` use ``tap`` as engine
+then
 
 ````bash
 tap test/basic.js
