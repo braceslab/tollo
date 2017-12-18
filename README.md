@@ -1,3 +1,5 @@
+# work in progress
+
 # tollo
 
 [![NPM Version](http://img.shields.io/npm/v/tollo.svg?style=flat)](https://www.npmjs.org/package/tollo)
@@ -82,6 +84,7 @@ See [documentation](./doc/README.md) for further informations.
 - [ ] CALLBACK mode (engine, doc, example, test)
 - [ ] HTTP mode (doc, example, test)
 - [ ] use other testing engine (``mocha``, ``istanbul``, ``jasmine`` ...)
+- [ ] browser version
 
 ---
 
