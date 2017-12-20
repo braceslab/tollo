@@ -43,20 +43,17 @@ tollo.add({
 ````
 
 ### describe
-block description, optional  
+block description, required  
 type: ``string``  
-default: ``null``
 
 ### mode
-declare block testing behavior  
+declare block testing behavior, required  
 type: ``tollo.mode``  
 - ``tollo.mode.SYNC``
 - ``tollo.mode.PROMISE``
 - ``tollo.mode.CALLBACK``
 - ``tollo.mode.EVENT``
 - ``tollo.mode.HTTP``  
-
-default: ``tollo.mode.SYNC``  
 
 ### arrange
 

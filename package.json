@@ -27,7 +27,9 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "example-basic": "node example/basic.js"
+    "example-basic": "node example/basic.js",
+    "example-fail": "node example/fail.js",
+    "example-missing": "node example/missing.js"
   },
   "author": "Simone Sanfratello <simone@braceslab.com>",
   "license": "MIT"
