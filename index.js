@@ -15,4 +15,4 @@ log.set({
   enabled: { segments: '*', levels: ['trace', 'error', 'warning', 'panic'] }
 })
 
-module.exports = require('./lib/tester/engine')
+module.exports = require('./lib/tester')

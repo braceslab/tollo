@@ -1,12 +1,16 @@
+const tollo = require('../index')
+
 const fs = require('fs')
 
 function sum (a, b) {
   return a + b
 }
 
-const tester = require('../index').tester
+function pop (array) {
+  array.pop()
+}
 
-tester.start = function () {
+tollo.start = function () {
   return new Promise((resolve, reject) => {
     // declare start function
     console.log('start')
@@ -14,7 +18,7 @@ tester.start = function () {
   })
 }
 
-tester.end = function () {
+tollo.end = function () {
   return new Promise((resolve, reject) => {
     // declare end function
     console.log('end')
@@ -23,13 +27,13 @@ tester.end = function () {
 }
 
 // sync
-tester.add({
+tollo.add({
   'sum': {
     describe: 'sum two numbers',
-    mode: tester.mode.SYNC,
+    mode: tollo.mode.SYNC,
 
     act: sum,
-    // assert: default > tester.assert.equal
+    // assert: default > tollo.assert.equal
 
     cases: [
       {
@@ -45,44 +49,34 @@ tester.add({
   }
 })
 
-// async - callback
-tester.add({
-  'fs.chmod': {
-    describe: 'fs.chmod',
-    mode: tester.mode.CALLBACK,
+// sync mutation
+tollo.add({
+  'array.pop': {
+    describe: 'pop the last element of array',
+    mode: tollo.mode.SYNC,
 
-    arrange: (input, sandbox) => {
-      return new Promise((resolve, reject) => {
-        fs.chmod(input[0], 555, (err) => {
-          if (err) {
-            reject(err)
-            return
-          }
-          resolve()
-        })
-      })
-    },
-    act: fs.chmod,
-    assert: tester.assert.callback, // !default assert for async is promise
+    act: pop,
+    assert: tollo.assert.mutation,
 
     cases: [
       {
-        input: ['path', 666, tester.callback], // < need tester.callback in args
-        output: undefined
+        input: [[1, 2]],
+        output: [1]
       },
       {
-        input: ['path/denied', 123, tester.callback],
-        output: new Error('EAUTH_DENIED') // more args > use []
+        input: [[1, 2, 3]],
+        output: [1, 2]
       }
     ]
   }
 })
 
+/*
 // async - Promise
-tester.add({
+tollo.add({
   'fs.chmodAsync': {
     disabled: true,
-    mode: tester.mode.ASYNC,
+    mode: tollo.mode.PROMISE,
 
     arrange: (input, sandbox) => {
       return new Promise((resolve, reject) => {
@@ -91,10 +85,10 @@ tester.add({
       })
     },
     act: fs.chmodAsync,
-    assert: tester.assert.promise,
-    // === tester.assert.promise
+    assert: tollo.assert.promise,
+    // === tollo.assert.promise
     // assert: (result, input, output, sandbox) => { // < output: {resolve: value} | {reject: value}
-    //   return tester.promise((resolve, reject) => {
+    //   return tollo.promise((resolve, reject) => {
     //     if (output.hasKey(resolve)) {
     //       result === output.resolve
     //         ? resolve()
@@ -118,11 +112,45 @@ tester.add({
   }
 })
 
+/*
+// async - callback
+tollo.add({
+  'fs.chmod': {
+    describe: 'fs.chmod',
+    mode: tollo.mode.CALLBACK,
+
+    arrange: (input, sandbox) => {
+      return new Promise((resolve, reject) => {
+        fs.chmod(input[0], 555, (err) => {
+          if (err) {
+            reject(err)
+            return
+          }
+          resolve()
+        })
+      })
+    },
+    act: fs.chmod,
+    assert: tollo.assert.callback, // !default assert for async is promise
+
+    cases: [
+      {
+        input: ['path', 666, tollo.callback], // < need tollo.callback in args
+        output: undefined
+      },
+      {
+        input: ['path/denied', 123, tollo.callback],
+        output: new Error('EAUTH_DENIED') // more args > use []
+      }
+    ]
+  }
+})
+
 // event
-tester.add({
+tollo.add({
   'fs.createWriteStream': {
     disabled: true,
-    mode: tester.mode.EVENT,
+    mode: tollo.mode.EVENT,
 
     arrange: (input, sandbox) => {
       return new Promise((resolve, reject) => {
@@ -131,7 +159,7 @@ tester.add({
       })
     },
     act: fs.createWriteStream,
-    // assert: tester.assert.event,
+    // assert: tollo.assert.event,
 
     cases: [
       {
@@ -147,10 +175,10 @@ tester.add({
 })
 
 // event
-tester.add({
+tollo.add({
   'fs.createWriteStream().something': {
     disabled: true,
-    mode: tester.mode.EVENT,
+    mode: tollo.mode.EVENT,
 
     prepare: (resolve, reject, sandbox) => {
     },
@@ -175,7 +203,7 @@ tester.add({
       this._sandbox.stream.something(...args)
       return this._sandbox.stream
     },
-    // assert: tester.assert.event,
+    // assert: tollo.assert.event,
     tidy: (sandbox, resolve, reject) => {
       sandbox.stream.end()
     },
@@ -193,14 +221,14 @@ tester.add({
   }
 })
 
-tester.add({
+tollo.add({
   'user find': {
     disabled: true,
     describe: 'attempt to login using username and/or email and password',
-    mode: tester.mode.HTTP,
+    mode: tollo.mode.HTTP,
 
     act: {post: '/api/v1/user/login'}, // header: ...
-    // assert: tester.assert.http,
+    // assert: tollo.assert.http,
 
     cases: [
       {
@@ -310,10 +338,10 @@ tester.add({
   }
 })
 
-tester.add({
+tollo.add({
   'fs.exists': {
     describe: '',
-    mode: tester.mode.PROMISE,
+    mode: tollo.mode.PROMISE,
     act: fs.exists,
     cases: [
       {
@@ -333,11 +361,11 @@ tester.add({
       const fs = require('a-toolbox').fs
       return fs.touch('/tmp/file')
     },
-    assert: tester.assert.equal
+    assert: tollo.assert.equal
   },
   'fs.touch': {
     describe: '',
-    mode: tester.mode.PROMISE,
+    mode: tollo.mode.PROMISE,
     act: fs.touch,
     cases: [
       {
@@ -349,7 +377,7 @@ tester.add({
       }
     ],
     assert: async (result, input, output, sandbox) => {
-      if (!await tester.assert.equal(result, input, output, sandbox)) {
+      if (!await tollo.assert.equal(result, input, output, sandbox)) {
         return false
       }
       const fs = require('a-toolbox').fs
@@ -358,7 +386,7 @@ tester.add({
   },
   'fs.unlink': {
     describe: '',
-    mode: tester.mode.PROMISE,
+    mode: tollo.mode.PROMISE,
     act: fs.unlink,
     cases: [
       {
@@ -376,8 +404,9 @@ tester.add({
       const fs = require('a-toolbox').fs
       return fs.touch('/tmp/file')
     },
-    assert: tester.assert.equal
+    assert: tollo.assert.equal
   }
 })
+*/
 
-tester.run()
+tollo.run()

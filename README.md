@@ -10,7 +10,7 @@ javascript testing library AAA schema
 
 ## Purpose
 
-A tool to write declarative test unit  
+A tool to write declarative unit test  
 [why test code is so awful?](..medium)
 
 ## Install
@@ -80,9 +80,10 @@ See [documentation](./doc/README.md) for further informations.
 
 ## TODO
 
+- [ ] unit test
 - [ ] PROMISE mode (doc, example, test)
 - [ ] CALLBACK mode (engine, doc, example, test)
-- [ ] HTTP mode (doc, example, test)
+- [ ] HTTP mode (engine review, doc, example, test)
 - [ ] use other testing engine (``mocha``, ``istanbul``, ``jasmine`` ...)
 - [ ] browser version
 

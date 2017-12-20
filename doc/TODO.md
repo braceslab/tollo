@@ -31,7 +31,9 @@ done
 ---
 sandbox is shared for each test: each test cases use the same sandbox (examples)
 use global to share globally in free use (examples)
+https://github.com/facebook/Docusaurus
 
 #### MISC
 orchestration / parallel run
 ? generate chained test: example login + get locked api
+use to mock functions or http api

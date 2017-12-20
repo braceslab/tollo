@@ -1,6 +1,6 @@
 {
   "name": "tollo",
-  "version": "0.0.1-alpha",
+  "version": "0.0.1-dev",
   "description": "javascript tester library",
   "main": "index.js",
   "files": [
@@ -12,7 +12,7 @@
     "bluebird": "^3.x",
     "checkv": "^0.x",
     "lodash": "^4.x",
-    "log-segment": "^1.5.0",
+    "log-segment": "^1.x",
     "orchestrator": "^0.3.x",
     "request": "^2.x",
     "request-promise": "^4.x",
@@ -26,7 +26,8 @@
     "node": ">=8"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "example-basic": "node example/basic.js"
   },
   "author": "Simone Sanfratello <simone@braceslab.com>",
   "license": "MIT"
