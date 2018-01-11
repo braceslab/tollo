@@ -1,6 +1,7 @@
-const tollo = require('../index')
+const tools = require('a-toolbox')
+const fs = require('fs-extra')
 
-const fs = require('fs')
+const tollo = require('../index')
 
 function sum (a, b) {
   return a + b
@@ -10,6 +11,7 @@ function pop (array) {
   array.pop()
 }
 
+/*
 tollo.start = function () {
   return new Promise((resolve, reject) => {
     // declare start function
@@ -25,10 +27,12 @@ tollo.end = function () {
     resolve()
   })
 }
+*/
 
 // sync
 tollo.add({
   'sum': {
+    disabled: true,
     describe: 'sum two numbers',
     mode: tollo.mode.SYNC,
 
@@ -52,6 +56,7 @@ tollo.add({
 // sync mutation
 tollo.add({
   'array.pop': {
+    disabled: true,
     describe: 'pop the last element of array',
     mode: tollo.mode.SYNC,
 
@@ -71,42 +76,25 @@ tollo.add({
   }
 })
 
-/*
 // async - Promise
 tollo.add({
-  'fs.chmodAsync': {
-    disabled: true,
+  'fs.chmod': {
+    // disabled: true,
     mode: tollo.mode.PROMISE,
 
-    arrange: (input, sandbox) => {
-      return new Promise((resolve, reject) => {
-        // fs.chmod 123
-        resolve()
-      })
+    arrange: async (input, sandbox) => {
+      await tools.fs.unlink('/tmp/chmod', true)
+      await tools.fs.touch('/tmp/chmod', 0o666)
     },
-    act: fs.chmodAsync,
-    assert: tollo.assert.promise,
-    // === tollo.assert.promise
-    // assert: (result, input, output, sandbox) => { // < output: {resolve: value} | {reject: value}
-    //   return tollo.promise((resolve, reject) => {
-    //     if (output.hasKey(resolve)) {
-    //       result === output.resolve
-    //         ? resolve()
-    //         : reject()
-    //     }
-    //     result === output.reject
-    //       ? resolve()
-    //       : reject()
-    //   })
-    // },
+    act: fs.chmod,
 
     cases: [
       {
-        input: ['path', 555]
+        input: ['/tmp/chmod', 0o444]
       },
       {
-        input: ['path/denied', 444],
-        throw: new Error('EDENIED')
+        input: ['/var/path/none', 0o444],
+        throw: new Error('ENOENT')
       }
     ]
   }

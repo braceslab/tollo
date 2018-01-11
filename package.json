@@ -1,6 +1,6 @@
 {
   "name": "tollo",
-  "version": "0.0.2-dev",
+  "version": "0.0.3-dev",
   "description": "javascript tester library",
   "main": "index.js",
   "files": [
@@ -8,9 +8,9 @@
     "lib/*"
   ],
   "dependencies": {
-    "a-toolbox": "^1.x",
+    "a-toolbox": "^1.2.3",
     "bluebird": "^3.x",
-    "checkv": "^0.0.x",
+    "checkv": "^x",
     "lodash": "^4.x",
     "log-segment": "^1.x",
     "orchestrator": "^0.3.x",
@@ -20,6 +20,7 @@
     "tough-cookie": "^2.x"
   },
   "devDependencies": {
+    "fs-extra": "^3.x",
     "standard": "^x"
   },
   "engines": {

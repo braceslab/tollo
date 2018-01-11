@@ -1,5 +1,8 @@
 # TODO
 
+### BUG
+in act, try/catch early call orchestration done - before assert
+
 #### FUNCTION TYPES
 - async - act, assert / callback
 - async/await mode
