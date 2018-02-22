@@ -4,7 +4,7 @@
   "dependencies": {
     "a-toolbox": "^1.x",
     "bluebird": "^3.x",
-    "checkv": "0.0.x",
+    "checkv": "^0.x",
     "lodash": "^4.x",
     "log-segment": "^1.x",
     "orchestrator": "^0.3.x",
