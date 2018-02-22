@@ -1,5 +1,3 @@
-# work in progress
-
 # tollo
 
 [![NPM Version](http://img.shields.io/npm/v/tollo.svg?style=flat)](https://www.npmjs.org/package/tollo)
@@ -8,10 +6,11 @@
 
 javascript testing library AAA schema
 
+# This project is under development
+
 ## Purpose
 
-A tool to write declarative unit test  
-[why test code is so awful?](..medium)
+Write declarative, massive, maintenable unit test  
 
 ## Install
 
@@ -20,21 +19,23 @@ $ npm i tollo --save
 $ npm i tap -g
 ````
 
+``tollo`` use ``tap`` as test engine
+
 ### Quick start
 
-in test/basic.js
+see [example/basic.js](./example/basic.js)
 
 ````js
 const tollo = require('tollo')
 
+// sync pure function
 function sum (a, b) {
   return a + b
 }
 
-// sync
 tester.add({
   'function sum': {
-    describe: 'sum two numbers',
+    describe: 'sum two numbers and get result',
     mode: tester.mode.SYNC,
 
     act: sum,
@@ -53,26 +54,73 @@ tester.add({
   }
 })
 
-// callback
-...
+// sync mutation function
+function pop (array) {
+  array.pop()
+}
 
-// promise / async
-...
+tollo.add({
+  'function pop': {
+    describe: 'pop the last element of the given array',
+    mode: tollo.mode.SYNC,
 
-// event
-...
+    act: pop,
+    assert: tollo.assert.mutation,
 
-// http
-...
+    cases: [
+      {
+        input: [[1, 2]],
+        output: [1]
+      },
+      {
+        input: [[1, 2, 3]],
+        output: [1, 2]
+      },
+      // fail
+      {
+        input: [[4, 5, 6]],
+        output: [4]
+      }      
+    ]
+  }
+})
+
+// async - Promise
+const fs = require('fs-extra')
+const tools = require('a-toolbox')
+
+tollo.add({
+  'fs.chmod': {
+    mode: tollo.mode.PROMISE,
+
+    arrange: async (input, sandbox) => {
+      await tools.fs.unlink('/tmp/chmod', true)
+      await tools.fs.touch('/tmp/chmod', 0o666)
+    },
+    act: fs.chmod,
+
+    cases: [
+      {
+        input: ['/tmp/chmod', 0o444]
+      },
+      {
+        input: ['/var/path/none', 0o444],
+        throw: new Error('ENOENT')
+      }
+    ]
+  }
+})
 
 tollo.run()
 ````
 
-then
+then run by ``tap``
 
 ````bash
-tap test/basic.js
+tap example/basic.js
 ````
+
+![output](./doc/img/basic-output.png)
 
 ## Documentation
 
@@ -80,12 +128,13 @@ See [documentation](./doc/README.md) for further informations.
 
 ## TODO
 
+- [ ] documentation doc/README.md
 - [ ] unit test
 - [ ] PROMISE mode (doc, example, test)
 - [ ] CALLBACK mode (engine, doc, example, test)
 - [ ] HTTP mode (engine review, doc, example, test)
-- [ ] use other testing engine (``mocha``, ``istanbul``, ``jasmine`` ...)
-- [ ] browser version
+- [ ] use other testing engine (``jest``, ``mocha``, ``istanbul``, ``jasmine`` ...)
+- [ ] browser version (no HTTP mode)
 
 ---
 
@@ -93,7 +142,7 @@ See [documentation](./doc/README.md) for further informations.
 
 The MIT License (MIT)
 
-Copyright (c) 2017, [braces lab](https://braceslab.com)
+Copyright (c) 2017-2018, [braces lab](https://braceslab.com)
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

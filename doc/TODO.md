@@ -40,3 +40,5 @@ https://github.com/facebook/Docusaurus
 orchestration / parallel run
 ? generate chained test: example login + get locked api
 use to mock functions or http api
+
+[why test code is so awful?](..medium)

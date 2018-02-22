@@ -1,16 +1,10 @@
 {
   "name": "tollo",
-  "version": "0.0.3-dev",
-  "description": "javascript tester library",
-  "main": "index.js",
-  "files": [
-    "index.js",
-    "lib/*"
-  ],
+  "version": "0.0.4-dev",
   "dependencies": {
-    "a-toolbox": "^1.2.3",
+    "a-toolbox": "^1.x",
     "bluebird": "^3.x",
-    "checkv": "^x",
+    "checkv": "0.0.x",
     "lodash": "^4.x",
     "log-segment": "^1.x",
     "orchestrator": "^0.3.x",
@@ -21,8 +15,14 @@
   },
   "devDependencies": {
     "fs-extra": "^3.x",
-    "standard": "^x"
+    "standard": "^11.x"
   },
+  "description": "javascript testing library AAA schema",
+  "main": "index.js",
+  "files": [
+    "index.js",
+    "lib/*"
+  ],
   "engines": {
     "node": ">=8"
   },
@@ -31,6 +31,10 @@
     "example-basic": "node example/basic.js",
     "example-fail": "node example/fail.js",
     "example-missing": "node example/missing.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/braceslab/tollo.git"
   },
   "author": "Simone Sanfratello <simone@braceslab.com>",
   "license": "MIT"
