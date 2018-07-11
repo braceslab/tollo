@@ -1,6 +1,6 @@
 {
   "name": "tollo",
-  "version": "0.0.4-dev",
+  "version": "0.0.5-dev",
   "dependencies": {
     "a-toolbox": "^1",
     "bluebird": "^3",

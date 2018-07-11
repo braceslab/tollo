@@ -33,10 +33,10 @@ function sum (a, b) {
   return a + b
 }
 
-tester.add({
+tollo.add({
   'function sum': {
     describe: 'sum two numbers and get result',
-    mode: tester.mode.SYNC,
+    mode: tollo.mode.SYNC,
 
     act: sum,
 
