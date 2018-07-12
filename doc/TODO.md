@@ -5,7 +5,7 @@ in act, try/catch early call orchestration done - before assert
 
 #### FUNCTION TYPES
 - async - act, assert / callback
-- async/await mode
+- async/await mode (promise mode alias?)
 - event
 - http
   - params in url es /user/:id
