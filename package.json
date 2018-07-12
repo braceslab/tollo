@@ -2,20 +2,20 @@
   "name": "tollo",
   "version": "0.0.5-dev",
   "dependencies": {
-    "a-toolbox": "^1.4.3",
-    "bluebird": "^3.5.1",
-    "checkv": "0.0.18",
-    "lodash": "^4.x",
-    "log-segment": "^1.x",
-    "orchestrator": "^0.3.8",
-    "request": "^2.x",
-    "request-promise": "^4.x",
-    "tap": "^12.0.1",
-    "tough-cookie": "^2.x"
+    "a-toolbox": "^1",
+    "bluebird": "^3",
+    "checkv": "^0",
+    "lodash": "^4",
+    "log-segment": "^1",
+    "orchestrator": "^0.3",
+    "request": "^2",
+    "request-promise": "^4",
+    "tap": "^12",
+    "tough-cookie": "^2"
   },
   "devDependencies": {
-    "fs-extra": "^3.x",
-    "standard": "^11.0.1"
+    "fs-extra": "^3",
+    "standard": "^11"
   },
   "description": "javascript testing library AAA schema",
   "main": "index.js",
