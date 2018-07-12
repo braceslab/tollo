@@ -134,7 +134,7 @@ See [documentation](./doc/README.md) for further informations.
 - [ ] CALLBACK mode (engine, doc, example, test)
 - [ ] HTTP mode (engine review, doc, example, test)
 - [ ] use other testing engine (``jest``, ``mocha``, ``istanbul``, ``jasmine`` ...)
-- [ ] browser version (no HTTP mode)
+- [ ] browser version (with HTTP!)
 
 ---
 
