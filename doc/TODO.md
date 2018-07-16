@@ -1,7 +1,11 @@
 # TODO
 
+remove promises >0 use async/await
+
 ### BUG
 in act, try/catch early call orchestration done - before assert
+
+! default parallel exec
 
 #### FUNCTION TYPES
 - async - act, assert / callback
