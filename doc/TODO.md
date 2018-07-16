@@ -7,6 +7,8 @@ in act, try/catch early call orchestration done - before assert
 
 ! default parallel exec
 
+doc: disabeld case
+
 #### FUNCTION TYPES
 - async - act, assert / callback
 - async/await mode (promise mode alias?)
