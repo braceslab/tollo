@@ -11,8 +11,11 @@ log.set({
     panic: { color: 'magenta', marker: 'panic' }
   },
   segments: { '*': { color: 'white' } },
-  format: '[{marker}] {message}',
-  enabled: { segments: '*', levels: ['trace', 'error', 'warning', 'panic'] }
+  format: '[{marker}] {message}'
+  // enabled: {
+  //  segments: '*',
+  //  levels: '*'
+  // ['trace', 'error', 'warning', 'panic'] }
 })
 
 module.exports = require('./lib/engine')
