@@ -1,7 +1,18 @@
 # TODO
 
+verbosity
+
+remove promises >0 use async/await
+
+http partial body compare > recursive for Array/Object
+- add tollearence es. Date > day
+
 ### BUG
 in act, try/catch early call orchestration done - before assert
+
+! default parallel exec
+
+doc: disabeld case
 
 #### FUNCTION TYPES
 - async - act, assert / callback
@@ -16,7 +27,7 @@ in act, try/catch early call orchestration done - before assert
 - use faker to auto-add cases and/or random cases
 
 #### WIZARD
-wizard mode for cases: random (faker?) input, ask for output
+wizard mode for cases: random input, ask for output
 
 #### DOC
 jsdoc
