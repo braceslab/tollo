@@ -53,3 +53,5 @@ orchestration / parallel run
 use to mock functions or http api
 
 [why test code is so awful?](..medium)
+
+doc: http.body.file {path, name, mime}

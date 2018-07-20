@@ -8,7 +8,7 @@
     "lodash": "^4",
     "log-segment": "^1",
     "orchestrator": "^0.3",
-    "request": "^2.87.0",
+    "request": "^2",
     "request-promise": "^4",
     "tap": "^12",
     "tough-cookie": "^2"
